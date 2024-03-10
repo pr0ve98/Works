@@ -19,7 +19,7 @@ public class BankService {
 		System.out.println("계좌 목록");
 		System.out.println("---------");
 		for(int i=0; i<cnt; i++) {
-			System.out.println(bankVOArray[i].getAno()+" | "+bankVOArray[i].getOwner()+" | "+bankVOArray[i].getBalance());
+			System.out.printf(bankVOArray[i].getAno()+" | "+bankVOArray[i].getOwner()+" | %,d\n",bankVOArray[i].getBalance());
 		}
 	}
 	
@@ -27,18 +27,51 @@ public class BankService {
 		System.out.println("---------");
 		System.out.println("예금");
 		System.out.println("---------");
-		while(true) {
-			for(int i=0; i<=cnt; i++) {
-				System.out.print("계좌번호> ");
-				if(BankRun.sc.next().equals(bankVOArray[i].getAno())) {
-					System.out.print("입금액> ");
-					bankVOArray[i].setBalancePlus(BankRun.sc.nextInt());
-					System.out.println("결과: 입금이 확인되었습니다");
-					System.out.println("현재 잔고> "+bankVOArray[i].getBalance());
+		System.out.print("계좌번호> ");
+		String ano = BankRun.sc.next();
+		int i = 0;
+		boolean run = true;
+		while(run) {
+			if(!ano.equals(bankVOArray[i].getAno())) {
+				i++;
+				if(i>=cnt) {
+					System.out.println("해당 계좌를 찾을 수 없습니다.");
+					return;
 				}
-				else break;
-				System.out.println("해당하는 계좌가 없습니다.");
+			}
+			else { 
+				run = false;
 			}
 		}
+		System.out.print("입금액> ");
+		bankVOArray[i].setBalancePlus(BankRun.sc.nextInt());
+		System.out.println("결과: 입금이 확인되었습니다");
+		System.out.printf("현재 잔고> %,d\n",bankVOArray[i].getBalance());
+	}
+
+	public static void withdraw(BankVO[] bankVOArray, int cnt) {
+		System.out.println("---------");
+		System.out.println("출금");
+		System.out.println("---------");
+		System.out.print("계좌번호> ");
+		String ano = BankRun.sc.next();
+		int i = 0;
+		boolean run = true;
+		while(run) {
+			if(!ano.equals(bankVOArray[i].getAno())) {
+				i++;
+				if(i>=cnt) {
+					System.out.println("해당 계좌를 찾을 수 없습니다.");
+					return;
+				}
+			}
+			else { 
+				run = false;
+			}
+		}
+		System.out.print("출금액> ");
+		bankVOArray[i].setBalanceMinus(BankRun.sc.nextInt());
+		System.out.println("결과: 출금이 확인되었습니다");
+		System.out.printf("현재 잔고> %,d\n", bankVOArray[i].getBalance());
 	}
 }

@@ -6,6 +6,7 @@ public class BankVO {
 	private int balance;
 	
 	private int balancePlus;
+	private int balanceMinus;
 
 	public String getAno() {
 		return ano;
@@ -37,6 +38,14 @@ public class BankVO {
 	
 	public void setBalancePlus(int balancePlus) {
 		this.balance += balancePlus;
-		this.balancePlus = balancePlus;
 	}
+
+	public int getBalanceMinus() {
+		return balanceMinus;
+	}
+
+	public void setBalanceMinus(int balanceMinus) {
+		this.balance -= balanceMinus;
+	}
+	
 }

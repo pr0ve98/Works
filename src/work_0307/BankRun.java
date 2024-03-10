@@ -31,14 +31,16 @@ public class BankRun {
 			else if(selectNo == 3) {
 				BankService.deposit(bankVOArray, cnt);
 			}
+			else if(selectNo == 4) {
+				BankService.withdraw(bankVOArray, cnt);
+			}
+			else if(selectNo == 5) {
+				System.out.println("\n프로그램을 종료합니다.");
+				run = false;
+			}
 			else System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.\n");
-		}
-//			else if(selectNo == 4) {
-//				withdraw();
-//			}
-//			else if(selectNo == 5) {
-//				run = false;
 		
+		}
 		sc.close();
 	}
 }
