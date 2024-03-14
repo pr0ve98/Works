@@ -11,7 +11,7 @@ public class Service {
 	static String[][] member =
 		{{"홍길동", "김말숙","이기자","소나무","아톰맨","에이맨","오하늘",
 			"최고봉","으뜸맨","사랑이","감나무","행복맨","가나다","오솔길"}
-		,{"2001-1-1", "2020-12-31","2019-5-20","2024-3-14",
+		,{"2000-1-1", "2020-12-31","2019-5-20","2024-3-14",
 		"2022-11-22","2023-12-11","2024-3-14","2021-3-14",
 		"2023-5-2","2024-3-13","2022-10-10","2000-12-12",
 		"2024-2-28","2024-3-1"}};
@@ -50,7 +50,7 @@ public class Service {
 			Period preiod = Period.between(todayDate, targetDate);
 			int totalMonth = (preiod.getYears()*-12)+(preiod.getMonths()*-1);
 			
-			if(oneYear.isAfter(targetDate) == true) {
+			if(targetDate.isBefore(oneYear) == true) {
 				System.out.println(member[0][i]+"\t\t"+targetDate.format(dtf)+"\t"+totalMonth+"개월");
 			}
 		}
