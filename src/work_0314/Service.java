@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 public class Service {
 	public static LocalDate todayDate = LocalDate.now();
 	public static LocalDate oneYear = todayDate.minusYears(1);
+	public static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	
 	static String[][] member =
 		{{"홍길동", "김말숙","이기자","소나무","아톰맨","에이맨","오하늘",
@@ -16,7 +17,9 @@ public class Service {
 		"2023-5-2","2024-3-13","2022-10-10","2000-12-12",
 		"2024-2-28","2024-3-1"}};
 	
-	public static void list() {
+	public Service() {}
+	
+	void list() {
 		System.out.println("=====================================================================");
 		System.out.println("회원명\t\t가입 날짜");
 		System.out.println("---------------------------------------------------------------------");
@@ -31,9 +34,10 @@ public class Service {
 			targetDate.format(dtf);
 			System.out.println(member[0][i]+"\t\t"+targetDate.format(dtf));
 		}
+//			memberList();
 	}
 	
-	public static void longTerm() {
+	void longTerm() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
 		System.out.println("=====================================================================");
@@ -55,4 +59,18 @@ public class Service {
 			}
 		}
 	}
+
+//	public static String memberList() {
+//		LocalDate targetDate = null;
+//		for(int i=0; i<member[0].length; i++) {
+//			String dateArray = member[1][i];
+//			Integer year = new Integer(dateArray.split("-")[0]);
+//			Integer month = new Integer(dateArray.split("-")[1]);
+//			Integer day = new Integer(dateArray.split("-")[2]);
+//			targetDate = LocalDate.of(year, month, day);
+//			targetDate.format(dtf);
+//		
+//		}
+//		return targetDate.format(dtf);
+//	}
 }
